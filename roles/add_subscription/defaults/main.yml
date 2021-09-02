@@ -1,0 +1,5 @@
+---
+# defaults file for roles/add_subscription
+satellite_katellocert: http://satellite.example.com/pub/katello-ca-consumer-latest.noarch.rpm
+satellite_activationkey: gpte-labs-rhel8
+satellite_org: prod

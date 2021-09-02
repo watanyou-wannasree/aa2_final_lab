@@ -1,0 +1,22 @@
+---
+# tasks file for roles/teardown_database
+- name: Remove Postgres packages
+  package:
+    name: "{{ __package }}"
+    state: absent
+  loop: 
+    - "{{ postgres_rhel8_repo }}"        
+    - "{{ postgres_library }}"
+    - "{{ postgres_packages }}"
+  loop_control:
+    loop_var: __package
+
+- name: Remove Postgres 10 data directory
+  file:
+    path: /var/lib/pgsql/10
+    state: absent
+
+- name: Remove Postgres user
+  user:
+    name: postgres
+    state: absent

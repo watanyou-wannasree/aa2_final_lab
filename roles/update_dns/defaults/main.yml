@@ -1,0 +1,4 @@
+---
+# defaults file for roles/update_dns
+ansible_hosts_file: /etc/ansible/hosts
+dns_zone_file: /opt/podman/volumes/bind9-volume/var/named/example.com.zone

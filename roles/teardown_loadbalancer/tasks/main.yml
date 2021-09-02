@@ -1,0 +1,11 @@
+---
+# tasks file for roles/teardown_loadbalancer
+- name: Remove load balancer packages
+  package:
+    name: "{{ load_balancer_packages }}"
+    state: absent
+
+#- name: configure haproxy
+#  file:
+#    path: /etc/haproxy/haproxy.cfg
+#    state: absent

@@ -1,0 +1,4 @@
+---
+# defaults file for roles/teardown_loadbalancer
+load_balancer_packages:
+  - haproxy

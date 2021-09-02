@@ -1,0 +1,14 @@
+---
+# tasks file for roles/smoketest_loadbalancer
+- name: Check frontend webserver for correct response
+  uri:
+    url: "http://{{ inventory_hostname }}.example.com/ping"
+    return_content: yes
+  until: '"alive" in result.content'
+  retries: 10
+  delay: 1
+  register: result
+  delegate_to: localhost
+  when: inventory_hostname in groups.load_balancers
+
+- debug: var=result

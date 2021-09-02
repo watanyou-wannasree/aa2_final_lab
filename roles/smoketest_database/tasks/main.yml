@@ -1,0 +1,18 @@
+---
+# tasks file for roles/smoketest_database
+- name: Smoketest Postgres database
+  postgresql_ping:
+    db: flask_db
+    login_host: "{{ groups.database_servers[0] }}"
+    login_user: flask
+    login_password: redhat
+    ssl_mode: disable
+  delegate_to: "{{ inventory_hostname }}"
+  run_once: true
+  register: result
+  tags:
+    - smoketest
+    - smoketest_database
+    - smoketest_database_servers
+
+- debug: var=result

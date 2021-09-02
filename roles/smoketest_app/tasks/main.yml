@@ -1,0 +1,14 @@
+---
+# tasks file for roles/smoketest_app
+- name: Check appserver for correct response
+  uri:
+    url: "http://{{ inventory_hostname }}.example.com:8080/ping"
+    return_content: yes
+  until: '"alive" in result.content'
+  retries: 10
+  delay: 1
+  register: result
+  delegate_to: localhost
+  when: inventory_hostname in groups.app_servers
+
+- debug: var=result
